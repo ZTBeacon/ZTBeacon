@@ -68,16 +68,14 @@ public class SearchActivity extends Activity {
       System.out.println("ACTION_SEARCH:" + query);
     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
       Word theWord = SearchUtil.getInstance().getMatches(intent.getDataString().trim().toLowerCase()).get(0);
-      System.out.println("SearchUtil.getInstance()");
+      System.out.println("您点击了第几家店:"+theWord.getId());
       launchWord(theWord);
       finish();
     } else {
       etSearch = (EditText) findViewById(R.id.search_etSearch);
       etSearch.setOnTouchListener(new OnTouchListener() {
         public boolean onTouch(View v, MotionEvent event) {
-          System.out.println("onSearchRequested");
           onSearchRequested();
-
           return false;
         }
       });

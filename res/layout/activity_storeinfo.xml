@@ -59,7 +59,7 @@
             android:layout_toLeftOf="@id/store_ll2" >
 
             <TextView
-                android:id="@+id/store_name"
+                android:id="@+id/store_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -203,6 +203,7 @@
                 android:background="@color/item_line" />
 
             <TextView
+                android:id="@+id/store_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="多年来，巴黎春天不仅从店堂装饰、硬件设备及婚纱礼服、还是在摄影技术、化妆风格上都注入了与世界接轨的流行时尚元素。坚持时尚、专业、亲切、诚信的经营理念，稳扎稳打、不断进取。"

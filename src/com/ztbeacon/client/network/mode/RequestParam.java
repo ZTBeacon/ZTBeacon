@@ -51,6 +51,11 @@ public class RequestParam {
 	 * 获取Message
 	 */
 	public static final String GET_MESSAGE = "/ServiceAPI/shop/";
+	
+	/**
+	 * 获取商家列表
+	 */
+	public static final String GET_STORE_LIST = "/ServiceAPI/shop/list/";
 
 	/**
 	 * 注册

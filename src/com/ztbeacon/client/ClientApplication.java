@@ -96,7 +96,6 @@ public class ClientApplication extends Application{
 	BeaconManagerListener beaconManagerListener = new BeaconManagerListener() {
 		@Override
 		public void onUpdateBeacon(ArrayList<Beacon> arg0) {
-			System.out.println("beaconManagerListener");
 			for (int i = 0; i < arg0.size(); i++) {
 				if (arg0.get(i).getRssi() > -65) {
 					isSaveSubBeacons = true;

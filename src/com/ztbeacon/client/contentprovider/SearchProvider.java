@@ -44,7 +44,6 @@ public class SearchProvider extends ContentProvider {
 		if (uri.getPathSegments().size() > 1) {
 			query = uri.getLastPathSegment().toLowerCase();
 		}
-		System.out.println("query");
 		return getSuggestions(query);
 	}
 
@@ -68,7 +67,8 @@ public class SearchProvider extends ContentProvider {
 	}
 
 	private Object[] columnValuesOfWord(long id, Word word) {
-		return new Object[] { id, // _id
+		return new Object[] { 
+				id, // _id
 				word.getWord(), // text1
 				word.getDefinition(), // text2
 				word.getWord(), // intent_data (included when clicking on item)
