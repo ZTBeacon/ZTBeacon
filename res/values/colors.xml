@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="page_bg">#ffffff</color>
+    <color name="white">#ffffff</color>
+    <color name="item_bg_default">#fafafa</color>
+    <color name="item_bg_pressed">#f1f1f1</color>
+    <color name="transparent">#00000000</color>
+    <color name="item_line">#c1c1c1</color>
+</resources>

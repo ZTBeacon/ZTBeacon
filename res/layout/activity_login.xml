@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+    
+    <RelativeLayout
+	    android:id="@+id/user_box"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_centerVertical="true"
+	    >
+    
+	<RelativeLayout
+	    android:id="@+id/user_box"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="50dp"
+	    android:background="@drawable/login_input_style"
+	    >
+	    <ImageView 
+	        android:id="@+id/user_head"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:background="@drawable/username"
+	        />
+	    <EditText 
+	        android:id="@+id/username"
+	        android:layout_width="match_parent"
+	    	android:layout_height="50dp"
+	    	android:gravity="center_vertical"
+	    	android:layout_toRightOf="@+id/user_head"
+	    	android:background="#00000000"
+	    	android:textColor="#939292"
+	    	android:hint="用户名"
+	    	android:paddingLeft="3dp"
+	        />
+	    
+	</RelativeLayout>
+	
+	<RelativeLayout
+	    android:id="@+id/pass_box"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="50dp"
+	    android:layout_below="@+id/user_box"
+	    android:background="@drawable/login_input_style"
+	    android:layout_marginTop="25dp"
+	    >
+	    <ImageView 
+	        android:id="@+id/pass_head"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:background="@drawable/password"
+	        />
+	    <EditText
+	        android:id="@+id/password"
+	        android:layout_width="match_parent"
+	    	android:layout_height="50dp"
+	    	android:gravity="center_vertical"
+	    	android:layout_toRightOf="@+id/pass_head"
+	    	android:background="#00000000"
+	    	android:textColor="#939292"
+	    	android:hint="密码"
+	    	android:inputType="textPassword"
+	    	android:paddingLeft="3dp"
+	        />
+	    
+	</RelativeLayout>
+
+	<CheckBox
+	    android:id="@+id/rember_user"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/pass_box"
+	    android:layout_marginTop="10dp"
+	    android:text="记住我的账号" 
+	    android:textColor="#666666"
+	    android:textSize="15sp"
+	    />
+    
+	<Button
+	    android:id="@+id/login_bt"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="50dp"
+	    android:layout_below="@+id/rember_user"
+	    android:background="@drawable/login_bt"
+	    android:layout_marginTop="30dp"
+	    android:text="登录"
+	    android:textColor="#fff"
+	    android:textSize="18sp"
+	    android:onClick="BtClick"
+	    />
+	
+	<RelativeLayout
+	    android:id="@+id/regist_box"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="50dp"
+	    android:layout_below="@+id/login_bt"
+	    android:background="#00000000"
+	    android:layout_marginTop="25dp"
+	    >
+	    <Button
+	        android:id="@+id/regist"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dp"
+	    	android:background="@drawable/regist_bt"
+	    	android:layout_alignParentLeft="true"
+	    	android:text="注册"
+		    android:textColor="#8f0c43"
+		    android:textSize="15sp"
+		    android:onClick="BtClick"
+	        />
+	    <Button
+	        android:id="@+id/noname_login"
+	        android:layout_width="wrap_content"
+	        android:layout_alignParentRight="true"
+	    	android:layout_height="50dp"
+	    	android:background="@drawable/login_onname_bt"
+	    	android:text="匿名登录"
+		    android:textColor="#383a3b"
+		    android:textSize="15sp"
+		    android:onClick="BtClick"
+	        />
+	    
+	</RelativeLayout>
+	
+	</RelativeLayout>
+</RelativeLayout>

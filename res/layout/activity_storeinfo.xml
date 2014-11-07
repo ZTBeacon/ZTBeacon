@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#8f0c43" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:onClick="clickBack"
+            android:src="@drawable/ic_tobefore" />
+
+        <TextView
+            android:id="@+id/store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="巴黎春天"
+            android:textColor="#fff"
+            android:textSize="28dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff" >
+
+        <RelativeLayout
+            android:id="@+id/store_ll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp" >
+
+            <ImageView
+                android:id="@+id/search_img"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/shadow_img" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="15dp"
+            android:layout_toLeftOf="@id/store_ll2" >
+
+            <TextView
+                android:id="@+id/store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="上海巴黎春天 系沪港合作大型商业零售商店，由名闻欧洲的法国巴黎春天百货公司策划及管理，为上海大都市跨世纪标志性著名建筑之一。 "
+                android:textColor="#98999a"
+                android:textSize="16dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="#fff"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" >
+
+            <ImageView
+                android:id="@+id/info_icon_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:src="@drawable/info_addr" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_tonext" />
+
+            <TextView
+                android:id="@+id/store_info_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/info_icon_addr"
+                android:layout_toRightOf="@+id/info_icon_addr"
+                android:text="长宁路823号新宁购物中心"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" >
+
+            <ImageView
+                android:id="@+id/info_icon_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:src="@drawable/info_phone" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_tonext" />
+
+            <TextView
+                android:id="@+id/store_info_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/info_icon_phone"
+                android:layout_toRightOf="@+id/info_icon_phone"
+                android:text="021-62345678"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" >
+
+            <ImageView
+                android:id="@+id/info_icon_net"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:src="@drawable/info_net" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_tonext" />
+
+            <TextView
+                android:id="@+id/store_info_net"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/info_icon_net"
+                android:layout_toRightOf="@+id/info_icon_net"
+                android:text="www.pcds.com.cn"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="#fff" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="详细简介"
+                android:textColor="#b6b7b7"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="0.2dip"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/item_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="多年来，巴黎春天不仅从店堂装饰、硬件设备及婚纱礼服、还是在摄影技术、化妆风格上都注入了与世界接轨的流行时尚元素。坚持时尚、专业、亲切、诚信的经营理念，稳扎稳打、不断进取。"
+                android:textColor="#a6a7a7"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+	        android:id="@+id/goto_navi"
+	        android:layout_width="fill_parent"
+	    	android:layout_height="50dp"
+	    	android:gravity="center"
+	    	android:background="@drawable/login_onname_bt"
+	    	android:text="到这里去"
+		    android:textColor="#383a3b"
+		    android:textSize="15sp"
+		    android:layout_margin="15dp"
+		    android:onClick="ClickNavi"
+	        />
+</LinearLayout>

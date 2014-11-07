@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ztbeacon.client"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:name=".ClientApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar" >
+        <activity
+            android:name="com.ztbeacon.client.activity.SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.ztbeacon.client.activity.TabHostActivity"></activity>
+        <activity android:name="com.ztbeacon.client.activity.LoginActivity"></activity>
+        <activity android:name="com.ztbeacon.client.activity.RegistActivity"></activity>
+        <activity android:name="com.ztbeacon.client.activity.navi.NaviActivity"></activity>
+        <activity android:name="com.ztbeacon.client.activity.car.CarActivity"></activity>
+        <activity android:name="com.ztbeacon.client.activity.store.StoreInfoActivity"></activity>
+        <activity android:name="com.ztbeacon.client.activity.home.HomeActivity"></activity>
+        <activity android:name="com.ztbeacon.client.activity.map.MapActivity" ></activity>
+        <activity android:name="com.ztbeacon.client.voiced.TtsDemo" ></activity>
+        <activity
+            android:name="com.ztbeacon.client.activity.home.HomeResultActivity"
+             >
+            <intent-filter>
+                <!-- 这里也不能忽略 -->
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!-- 指定上面的search_contentprovider.xml文件 -->
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@layout/searchable" />
+        </activity>
+        <activity
+            android:name="com.ztbeacon.client.activity.search.SearchActivity"
+             >
+            <intent-filter>
+                <!-- 这里也不能忽略 -->
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!-- 指定上面的search_contentprovider.xml文件 -->
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@layout/searchable" />
+        </activity>
+        <service android:name="com.ztbeacon.client.service.MsgService"></service>
+        <service android:name="com.sensoro.beacon.kit.BeaconProcessService" ></service>
+        <service android:name="com.sensoro.beacon.kit.BeaconService" ></service>
+<!--之前searchable.xml中有一个searchSuggestAuthority的值其实和这里的authorities是相同的，这点药注意-->
+        <provider android:name="com.ztbeacon.client.contentprovider.SearchProvider" android:authorities="search" android:syncable="false" />  
+    </application>
+    <!-- 网络访问 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 网络访问 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>  
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+</manifest>

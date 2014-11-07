@@ -1,0 +1,336 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f0f0f0" >
+        <RelativeLayout
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/home_searchbox_style"
+            android:gravity="center_vertical" >
+
+            <EditText
+                android:id="@+id/search_etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="#00000000"
+                android:hint="搜索"
+                android:paddingLeft="32dp"
+                android:layout_centerVertical="true"
+                android:singleLine="true"
+                android:textColorHint="#bbb3b3"
+                android:textSize="15sp"
+                android:onClick="searchBt" />
+			<ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/search_icon"
+                android:layout_marginLeft="2dp"
+                 />
+            <ImageView
+                android:id="@+id/search_ivDeleteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:paddingRight="20dp"
+                android:src="@drawable/search_delete"
+                android:visibility="gone" />
+        </RelativeLayout>
+<!--      <Button
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="8dip"
+        android:layout_centerHorizontal="true"
+        android:ems="15"
+        android:background="@drawable/home_searchbox_style"
+        android:drawableLeft="@drawable/home_search"
+        android:textColor="#d1d1d1"
+        android:textSize="13sp"
+        android:src="@drawable/home_search"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:scaleType="fitStart"
+        android:onClick="searchBt"
+         /> -->
+	<FrameLayout
+	    android:id="@+id/display"
+        android:layout_width="fill_parent"
+        android:layout_height="200dip"
+       android:layout_below="@+id/search"
+        android:layout_marginTop="8dip"
+ 
+         >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="35dip"
+            android:layout_gravity="bottom"
+            android:background="#00000000"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dip"
+                android:gravity="center"
+                android:background="#00ff0000" >
+
+                <View
+                    android:id="@+id/v_dot0"
+                    style="@style/dot_style"
+                    android:background="@drawable/home_dot_focused" />
+
+                <View
+                    android:id="@+id/v_dot1"
+                    style="@style/dot_style" />
+
+                <View
+                    android:id="@+id/v_dot2"
+                    style="@style/dot_style" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+    
+	<LinearLayout
+        android:id="@+id/menu_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/display"
+        android:orientation="vertical"
+        android:background="#fff"
+ >
+    
+    <LinearLayout
+        android:id="@+id/menu_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu_list"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+ >
+       
+        
+        <ImageButton
+            android:id="@+id/food"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/home_food"
+            android:scaleType="fitCenter"
+            android:background="#00ff0000"
+            android:onClick="homeClick"
+            />
+        
+        <ImageButton
+            android:id="@+id/happy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/home_happy"
+            android:scaleType="fitCenter"
+            android:background="#00000000"
+            android:onClick="homeClick"
+            />
+        
+        <ImageButton
+            android:id="@+id/shop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/home_shop"
+            android:scaleType="fitCenter"
+            android:background="#000aa000"
+            android:onClick="homeClick"
+            />
+        
+        <ImageButton
+            android:id="@+id/more"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/home_more"
+            android:scaleType="fitCenter"
+            android:background="#0000ff00"
+            android:onClick="homeClick"
+            />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/menu_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+ >
+       <TextView
+        android:id="@+id/text_1"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="美食"
+        android:textSize="15sp"
+        android:textColor="#383a3b"
+        android:paddingBottom="2dp" 
+        android:layout_weight="1"
+        />
+       
+       <TextView
+        android:id="@+id/text_2"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="娱乐"
+        android:textSize="15sp"
+        android:textColor="#383a3b"
+        android:paddingBottom="2dp" 
+        android:layout_weight="1"
+        />
+       
+       <TextView
+        android:id="@+id/text_3"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="购物"
+        android:textSize="15sp"
+        android:textColor="#383a3b"
+        android:paddingBottom="2dp" 
+        android:layout_weight="1"
+        />
+       
+       <TextView
+        android:id="@+id/text_3"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="更多"
+        android:textSize="15sp"
+        android:textColor="#383a3b"
+        android:paddingBottom="2dp" 
+        android:layout_weight="1"
+        />
+       
+    </LinearLayout>
+    </LinearLayout>
+    
+	<LinearLayout
+        android:id="@+id/markt_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/menu_list"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_marginTop="10dp"
+ >
+		<RelativeLayout
+	        android:id="@+id/message_one"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/home_solid_style"
+	        android:layout_marginLeft="10dp"
+ 		>
+	    	<TextView 
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="wrap_content"
+	    	    android:text="商场信息"
+	    	    android:paddingTop="5dp"
+	    	    android:paddingBottom="5dp"
+	    	    android:textColor="#383a3b"
+	    	    android:textSize="15sp"
+	    	    />
+	    	
+			<TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignParentRight="true"
+			    android:paddingBottom="10dp"
+			    android:paddingTop="8dp"
+			    android:paddingRight="8dp"
+			    android:text="查看更多＞" 
+			    android:textSize="12sp"
+			    android:textColor="#898b8c"
+			    />
+	    </RelativeLayout>
+	    
+		<RelativeLayout
+	        android:id="@+id/message_one"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/home_solid_style"
+	        android:layout_marginLeft="10dp"
+	        android:paddingTop="5dp"
+	        android:onClick="turnStore"
+	        android:paddingBottom="5dp"
+ 		>
+	    	<ImageView 
+	    	    android:id="@+id/markt_img"
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="wrap_content"
+	    	    android:background="#ebebeb"
+	    	    android:src="@drawable/home_b"
+	    	    />
+	    	
+	    	<RelativeLayout
+		        android:id="@+id/address"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerVertical="true"
+		        android:gravity="clip_vertical"
+		        android:layout_toRightOf="@+id/markt_img"
+		        android:layout_marginLeft="10dp"
+		        android:background="#fff"
+ 			>
+			<TextView
+			    android:id="@+id/discount"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="巴黎春天会员全场9.0折" 
+			    android:textSize="18sp"
+			    android:textColor="#383a3b"
+			    />
+			
+			<TextView
+			    android:id="@+id/home_address"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_below="@id/discount"
+			    android:text="地址：长宁路823号新宁购物中心" 
+			    android:textSize="12sp"
+			    android:textColor="#98999a"
+			    />
+			<TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_below="@id/home_address"
+			    android:text="简介：巴黎春天在全国拥有众多的连锁分店，品牌影响力覆盖全国各大中城市。" 
+			    android:textSize="12sp"
+			    android:textColor="#98999a"
+			    />
+			</RelativeLayout>
+	    </RelativeLayout>
+	    
+	</LinearLayout>
+
+	
+
+</RelativeLayout>

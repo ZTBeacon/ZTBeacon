@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f0f0f0"
+    tools:context="com.ztbeacon.client.activity.map.MapActivity" >
+
+    <LinearLayout
+        android:id="@+id/floor_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical" >
+
+      <RelativeLayout
+          android:id="@+id/search_type"
+          android:layout_width="80dp"
+          android:layout_height="40dp"
+          android:layout_gravity="center_vertical"
+          android:layout_marginTop="5dp" >
+
+          <ImageButton
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_centerVertical="true"
+              android:layout_marginRight="15dp"
+              android:background="@drawable/regist_sanjiao" />
+
+          <com.ztbeacon.client.adapter.SpinnerButton
+              android:id="@+id/floor_spinner_btn"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#00000000"
+              android:layout_centerVertical="true"
+              android:gravity="left"
+              android:paddingLeft="10dp"
+              android:text="1F"
+              android:textColor="#8f0c43"
+              android:textSize="17sp" />
+
+      </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/home_searchbox_style"
+            android:gravity="center_vertical" >
+
+            <EditText
+                android:id="@+id/search_etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="#00000000"
+                android:hint="搜索"
+                android:paddingLeft="32dp"
+                android:layout_centerVertical="true"
+                android:singleLine="true"
+                android:textColorHint="#bbb3b3"
+                android:textSize="15sp" />
+			<ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/search_icon"
+                android:layout_marginLeft="2dp"
+                 />
+            <ImageView
+                android:id="@+id/search_ivDeleteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:paddingRight="20dp"
+                android:src="@drawable/search_delete"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+	<RelativeLayout 
+	    android:id="@+id/map_rl"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/floor_ll"
+	    android:layout_marginTop="10dp"
+	    android:background="#fff"
+	    >
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/button1"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/button1"
+        android:background="#5a719b"
+        android:text="珠宝"
+        android:textColor="@android:color/white"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="10dp"
+        android:background="#9c8da2"
+        android:text="精品化妆"
+        android:textColor="@android:color/white"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:background="#7692a7"
+        android:text="精品服饰"
+        android:textColor="@android:color/white"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignTop="@+id/button3"
+        android:background="#bf9ca3"
+        android:text="精品手表"
+        android:textColor="@android:color/white"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_alignBaseline="@+id/button4"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/button4"
+        android:background="#964776"
+        android:text="哈根达斯"
+        android:textColor="@android:color/white"
+        android:textSize="10dp" />
+</RelativeLayout>
+	<RelativeLayout 
+	    android:id="@+id/img_rl"
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/map_rl"
+        android:background="#fff"
+	    >
+    <com.ztbeacon.client.adapter.DragImageView
+        android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:scaleType="fitCenter" />
+	</RelativeLayout>
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/img_rl"
+        android:background="#fff"
+	    ></LinearLayout>
+</RelativeLayout>

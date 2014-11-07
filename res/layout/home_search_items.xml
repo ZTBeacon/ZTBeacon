@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="#fff" >
+
+        <RelativeLayout
+            android:id="@+id/search_rl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/home_search_img"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/home_search_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/home_search_img"
+                android:text="lname"
+                android:layout_marginTop="5dp"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/home_search_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/home_search_name"
+                android:layout_below="@+id/home_search_name"
+                android:layout_marginTop="5dp"
+                android:text="地址:徐汇区石龙路345弄27号"
+                android:textColor="#98999B"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_below="@id/search_rl1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/item_line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/line"
+            android:clickable="false" >
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#e1e1e1" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/line2"
+                android:layout_marginLeft="54dp"
+                android:layout_toRightOf="@+id/line2"
+                android:text="电话"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/daozhequ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/line2"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="48dp"
+                android:text="到这去"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

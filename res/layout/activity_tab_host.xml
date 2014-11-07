@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+         >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dp"
+                android:layout_weight="1"
+                android:background="@android:color/white" >
+            </FrameLayout>
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.0"
+                android:visibility="gone" />
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:background="#8F0C42" >
+         <LinearLayout
+            android:id="@+id/tab_ll_home"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:layout_weight="1" >
+             <ImageView 
+                 android:layout_width="50dp"
+                 android:layout_height="30dp"
+                 android:src="@drawable/home"
+                 android:layout_marginTop="8dp"
+                 android:layout_gravity="center"
+                 />
+             <TextView 
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="HOME"
+                 android:textSize="18dp"
+                 android:layout_gravity="center"
+                 />
+         </LinearLayout>
+         <LinearLayout
+             android:id="@+id/tab_ll_message"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:layout_weight="1" >
+             <ImageView 
+                 android:layout_width="50dp"
+                 android:layout_height="30dp"
+                 android:layout_marginTop="8dp"
+                 android:src="@drawable/message"
+                 android:layout_gravity="center"
+                 />
+             <TextView 
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="MSG"
+                 android:textSize="18dp"
+                 android:layout_gravity="center"
+                 />
+         </LinearLayout>
+         <LinearLayout
+             android:id="@+id/tab_ll_map"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:layout_weight="1" >
+             <ImageView 
+                 android:layout_width="50dp"
+                 android:layout_height="30dp"
+                 android:src="@drawable/map"
+                 android:layout_marginTop="8dp"
+                 android:layout_gravity="center"
+                 />
+             <TextView 
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="MAP"
+                 android:textSize="18dp"
+                 android:layout_gravity="center"
+                 />
+         </LinearLayout>
+         <LinearLayout
+             android:id="@+id/tab_ll_car"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:layout_weight="1" >
+             <ImageView 
+                 android:layout_width="50dp"
+                 android:layout_height="30dp"
+                 android:layout_marginTop="8dp"
+                 android:src="@drawable/car"
+                 android:layout_gravity="center"
+                 />
+             <TextView 
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="CAR"
+                 android:textSize="18dp"
+                 android:layout_gravity="center"
+                 />
+         </LinearLayout>
+         </LinearLayout>
+        </LinearLayout>
+    </TabHost>
+
+</RelativeLayout>

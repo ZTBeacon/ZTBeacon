@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back" >
+    
+    <RelativeLayout
+	    android:id="@+id/user_box"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_centerVertical="true"
+	    >
+    
+	<EditText
+	    android:id="@+id/username"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="40dp"
+	    android:background="@drawable/regist_input"
+	    android:hint="用户名"
+	    android:paddingLeft="10dp"
+	    android:textSize="15sp"
+	    android:textColor="#fff"
+	    android:textColorHint="#fff"
+	    />
+	    
+	
+	<EditText
+	    android:id="@+id/password"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="40dp"
+	    android:layout_below="@+id/username"
+	    android:background="@drawable/regist_input"
+	    android:layout_marginTop="30dp"
+	    android:hint="密码"
+	    android:paddingLeft="10dp"
+	    android:textSize="15sp"
+	    android:textColor="#fff"
+	    android:textColorHint="#fff"
+	    />
+
+	<EditText
+	    android:id="@+id/sure_password"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="40dp"
+	    android:layout_below="@+id/password"
+	    android:background="@drawable/regist_input"
+	    android:layout_marginTop="30dp"
+	    android:hint="确认密码"
+	    android:paddingLeft="10dp"
+	    android:textSize="15sp"
+	    android:textColor="#fff"
+	    android:textColorHint="#fff"
+	    />
+    
+	<EditText
+	    android:id="@+id/phone"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="40dp"
+	    android:layout_below="@+id/sure_password"
+	    android:background="@drawable/regist_input"
+	    android:layout_marginTop="30dp"
+	    android:hint="手机号"
+	    android:paddingLeft="10dp"
+	    android:textSize="15sp"
+	    android:textColor="#fff"
+	    android:textColorHint="#fff"
+	    />
+	
+	<RelativeLayout
+	    android:id="@+id/sex_box"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="40dp"
+	    android:layout_below="@+id/phone"
+	    android:layout_marginTop="30dp"
+	    android:background="@drawable/spinner_style"
+	    
+	    >
+	    <com.ztbeacon.client.adapter.SpinnerButton
+	        android:id="@+id/spinner_btn"
+	        android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+	        android:background="#00000000"
+	        android:text="男"
+	        android:gravity="left"
+	        android:layout_centerVertical="true"
+	        android:textColor="#fff"
+	        android:paddingLeft="10dp"
+	        android:textSize="15sp"
+	        />
+	    <ImageButton 
+	        android:layout_width="wrap_content"
+		    android:layout_centerVertical="true"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+	        android:background="@drawable/regist_sanjiao"
+	        android:layout_marginRight="15dp"
+	        />
+	</RelativeLayout>
+
+	<Button 
+	    android:id="@+id/regist"
+	    android:layout_width="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_height="40dp"
+	    android:layout_below="@+id/sex_box"
+	    android:background="@drawable/regist_sure"
+	    android:layout_marginTop="50dp"
+	    android:paddingLeft="8dp"
+	    android:text="注册"
+	    />
+	</RelativeLayout>
+</RelativeLayout>

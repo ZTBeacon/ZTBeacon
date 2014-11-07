@@ -1,0 +1,403 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NaviActivity"
+    android:background="@drawable/navi_act_bg" >
+
+    
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/navi_line_circle" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/navi_dotted_line_cirle" />
+
+        <ImageView
+            android:id="@+id/gua_radar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/navi_shadow_circle"
+            android:visibility="invisible" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/una_p0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+            
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/una_p1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+            
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/una_p2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+            
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/una_p3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+            
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/una_p4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+            
+             <com.ztbeacon.client.adapter.GView
+                android:id="@+id/una_p5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+            
+              <com.ztbeacon.client.adapter.GView
+                android:id="@+id/una_p6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+            
+          
+            
+            <!-- //////////////////////////////////////////////////////////////// -->
+            
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:visibility="invisible" >
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:visibility="invisible" >
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick" 
+                android:visibility="invisible">
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:visibility="invisible" >
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:visibility="invisible" >
+            </com.ztbeacon.client.adapter.GView>
+
+            <com.ztbeacon.client.adapter.GView
+                android:id="@+id/p19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:visibility="invisible" >
+            </com.ztbeacon.client.adapter.GView>
+            
+        </RelativeLayout>
+    
+    <com.ztbeacon.client.adapter.GView
+        android:id="@+id/gua_dic_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
+    </com.ztbeacon.client.adapter.GView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="-20dp" >
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/navi_top_circle_compass" />
+
+        <RelativeLayout
+            android:id="@+id/gua_compass_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" 
+            android:paddingTop="12dp">
+
+            <ImageView
+                android:id="@+id/gua_compass_arr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick="onClickView"
+                android:src="@drawable/navi_white_arr" />
+
+            <TextView
+                android:id="@+id/gua_compass_dis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gua_compass_arr"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="9999M"
+                android:textColor="#750a36"
+                android:textSize="12dp" 
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+
+  <ImageView
+        android:id="@+id/gua_topcircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-165dp"
+        android:src="@drawable/navi_top_circle" />
+
+    <TextView
+        android:id="@+id/gua_endname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"
+        android:textColor="#750a36"
+        android:text="石龙路\n龙川北路"
+        android:gravity="center"
+         android:onClick="onClickView"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/gua_floor"
+        android:layout_width="30dp"
+        android:layout_height="60dp"
+        android:src="@drawable/navi_b1" 
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-15dp"
+        android:layout_marginRight="10dp"
+         android:onClick="onClickView"
+       />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#8f0c42" >
+
+        <ImageView
+            android:id="@+id/gua_menbutton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/navi_menu_button" 
+            android:onClick="onClickView"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/gua_cheaptitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="4dp"
+                android:text="优惠信息："
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                 android:onClick="onClickView"
+                />
+
+             <TextView
+                 android:id="@+id/gua_cheapmsg"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentLeft="true"
+                 android:layout_below="@+id/gua_cheaptitle"
+                 android:paddingLeft="7dp"
+                 android:layout_marginTop="4dp"
+                 android:text="巷子口洗头房洗头送金条！"
+                 android:textSize="16dp" 
+                 android:textColor="#ffffff"
+                 android:onClick="onClickView"/>
+
+             <ImageView
+                 android:id="@+id/gua_pullbutton"
+                 android:layout_width="35dp"
+                 android:layout_height="35dp"
+                 android:layout_alignParentRight="true"
+                 android:layout_alignParentTop="true"
+                 android:layout_marginRight="5dp"
+                 android:src="@drawable/pull_button" 
+                 android:onClick="onClickView"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
