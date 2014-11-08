@@ -29,7 +29,6 @@ import android.widget.TextView;
 import com.iflytek.cloud.SpeechUtility;
 import com.ztbeacon.client.ClientApplication;
 import com.ztbeacon.client.R;
-import com.ztbeacon.client.activity.navi.NaviActivity;
 import com.ztbeacon.client.activity.store.StoreInfoActivity;
 import com.ztbeacon.client.adapter.ListviewAdapter;
 import com.ztbeacon.client.adapter.SpinnerButton;
@@ -167,7 +166,9 @@ public void onCreateContextMenu(ContextMenu menu, View v,
     msgList.setOnItemClickListener(new OnItemClickListener() {
     	@Override 
     	public void onItemClick(AdapterView < ?>arg0, View arg1, int arg2, long arg3) {
-        startActivity(new Intent(SearchActivity.this, StoreInfoActivity.class));
+    		HashMap<String, Object> map = msgData.get(arg2);
+    		Word word = new Word(map.get("id").toString(), map.get("name").toString(), map.get("address").toString());
+    		launchWord(word);
       }
     });
     msgList.setOnItemLongClickListener(new OnItemLongClickListener() {
