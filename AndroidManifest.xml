@@ -59,6 +59,7 @@
                 android:resource="@layout/searchable" />
         </activity>
         <service android:name="com.ztbeacon.client.service.MsgService"></service>
+        <service android:name="com.ztbeacon.client.service.LocService"></service>
         <service android:name="com.sensoro.beacon.kit.BeaconProcessService" ></service>
         <service android:name="com.sensoro.beacon.kit.BeaconService" ></service>
 <!--之前searchable.xml中有一个searchSuggestAuthority的值其实和这里的authorities是相同的，这点药注意-->
