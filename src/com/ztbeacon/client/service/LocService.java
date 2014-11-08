@@ -13,12 +13,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
-import android.os.PowerManager;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.ztbeacon.client.activity.navi.GetLoction;
-import com.ztbeacon.client.entity.UserInfo;
 import com.ztbeacon.client.entity.iBeaconClass;
 import com.ztbeacon.client.entity.iBeaconClass.iBeacon;
 
@@ -30,10 +26,6 @@ public class LocService extends Service {
 
 	private BluetoothAdapter mBluetoothAdapter;
 	private boolean flag = true;
-	private Button scan;
-	private TextView NavInfo;
-	private TextView UserLoc;
-	private PowerManager.WakeLock mWakeLock;
 	private HashMap<String, ArrayList<iBeacon>> beacons = new HashMap<String, ArrayList<iBeacon>>();
 	long time1;
 	long time2;
@@ -74,9 +66,7 @@ public class LocService extends Service {
 		final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
 		mBluetoothAdapter = bluetoothManager.getAdapter();
 
-		UserInfo.dstInfo.pos_x = 48.9;
-		UserInfo.dstInfo.pos_y = 19.2;
-		UserInfo.dstInfo.pos_z = 4;
+
 
 		startServer();
 

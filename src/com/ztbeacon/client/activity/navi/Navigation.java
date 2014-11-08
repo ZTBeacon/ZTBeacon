@@ -142,4 +142,44 @@ public class Navigation {
 		return message;
 
 	}
+
+	public void startNavi() {
+		UserInfo.dstInfo.pos_x = 48.9;
+		UserInfo.dstInfo.pos_y = 19.2;
+		UserInfo.dstInfo.pos_z = 4;
+		Thread navThread = new Thread(startNav);
+		navThread.start();
+	}
+
+	Runnable startNav = new Runnable() {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+
+			try {
+				UserInfo.routers = Navigation.getRouters();
+				while (true) {
+					if (UserInfo.routers.size() == 0) {
+						Message msg = new Message();
+						msg.what = 2;
+						msg.obj = "导航结束！";
+						break;// 导航结束
+					}
+					Navigation.doNav(UserInfo.routers);
+				}
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	};
+
 }
