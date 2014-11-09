@@ -57,7 +57,6 @@
         android:layout_below="@id/car_view" >
 
         <ImageView
-            android:id="@+id/car_re"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -66,12 +65,10 @@
             android:src="@drawable/car_navi" />
 
         <TextView
-            android:id="@+id/main_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/car_re"
             android:text="@string/car_navi"
             android:textColor="#636467"
             android:textSize="24dp" />
