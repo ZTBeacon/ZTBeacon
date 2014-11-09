@@ -109,6 +109,7 @@ public class NaviActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_navi);
 		//鍙栧緱bundle瀵硅薄 
+		Navigation.startNavi();
 		Bundle bundle = this.getIntent().getExtras();
 		String word = bundle.getString("word");
 		TextView textView = (TextView) findViewById(R.id.gua_endname);

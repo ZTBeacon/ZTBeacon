@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author 王小红 E-mail:493026465@qq.com
- * @version 创建时间：2014年11月5日 下午4:32:47 类说明
+ * @author 锟斤拷小锟斤拷 E-mail:493026465@qq.com
+ * @version 锟斤拷锟斤拷时锟戒：2014锟斤拷11锟斤拷5锟斤拷 锟斤拷锟斤拷4:32:47 锟斤拷说锟斤拷
  */
 public class UserInfo {
 	public static class srcInfo {
@@ -28,6 +28,6 @@ public class UserInfo {
 
 	public static int addAngle = 0;
 	public static int angle = 0 + addAngle;
-	public static int distance = 0;
+	public static String distance = "姝ｅ湪瀵艰埅锛岄潚绋嶇瓑";
 
 }

@@ -75,6 +75,47 @@ public class Navigation {
 
 	}
 
+	public static void startNavi() {
+		UserInfo.dstInfo.pos_x = 48.9;
+		UserInfo.dstInfo.pos_y = 19.2;
+		UserInfo.dstInfo.pos_z = 4;
+		Thread navThread = new Thread(startNav);
+		navThread.start();
+	}
+
+	static Runnable startNav = new Runnable() {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+
+			try {
+				UserInfo.routers = Navigation.getRouters();
+				while (true) {
+					if (UserInfo.routers.size() == 0) {
+						Message msg = new Message();
+						msg.what = 2;
+						msg.obj = "到达目的地";
+
+						UserInfo.distance = "到达目的地";
+						break;// ��������
+					}
+					Navigation.doNav(UserInfo.routers);
+				}
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	};
+
 	public static final Message doNav(List<Router> routers)
 			throws ClientProtocolException, JSONException, IOException {
 		Message message = new Message();
@@ -115,10 +156,10 @@ public class Navigation {
 						/ Math.atan((UserInfo.srcInfo.pos_x - routers.get(1)
 								.getPos_x())) * 180 / Math.PI);
 			}
-			//double[] result = { dis, angle };
-			UserInfo.angle=(int) angle;
-			UserInfo.distance = (int) dis;
-			//message.obj = result;
+			// double[] result = { dis, angle };
+			UserInfo.angle = (int) angle;
+			UserInfo.distance = String.valueOf((int)dis);
+			// message.obj = result;
 			routers.remove(0);
 		} else {
 			// 可能走错路了 1.发现所走的路不再列表中 2.跳过节点
