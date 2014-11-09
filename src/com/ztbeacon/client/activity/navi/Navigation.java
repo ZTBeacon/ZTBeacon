@@ -158,7 +158,7 @@ public class Navigation {
 			}
 			// double[] result = { dis, angle };
 			UserInfo.angle = (int) angle;
-			UserInfo.distance = String.valueOf((int)dis);
+			UserInfo.distance = String.valueOf((int)dis)+"M";
 			// message.obj = result;
 			routers.remove(0);
 		} else {

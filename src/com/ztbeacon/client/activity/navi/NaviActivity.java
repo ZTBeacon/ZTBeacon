@@ -33,14 +33,14 @@ import com.ztbeacon.client.entity.UserInfo;
 
 public class NaviActivity extends Activity {
 
-	private final float MAX_ROATE_DEGREE = 1.0f;// 鏈�澶氭棆杞竴鍛紝鍗�360掳
-	private SensorManager mSensorManager;// 浼犳劅鍣ㄧ鐞嗗璞�
-	private Sensor mOrientationSensor;// 浼犳劅鍣ㄥ璞�
-	private float mDirection;// 褰撳墠娴偣鏂瑰悜
-	private float mTargetDirection;// 鐩爣娴偣鏂瑰悜
-	private AccelerateInterpolator mInterpolator;// 鍔ㄧ敾浠庡紑濮嬪埌缁撴潫锛屽彉鍖栫巼鏄竴涓姞閫熺殑杩囩▼,灏辨槸涓�涓姩鐢婚�熺巼
+	private final float MAX_ROATE_DEGREE = 1.0f;//最多旋转一周，即360°
+	private SensorManager mSensorManager;//传感器管理对象
+	private Sensor mOrientationSensor;//传感器对象
+	private float mDirection;// 当前浮点方向
+	private float mTargetDirection;// 目标浮点方向
+	private AccelerateInterpolator mInterpolator;// 动画从开始到结束，变化率是一个加速的过程,就是一个动画速率
 	protected final Handler mHandler = new Handler();
-	private boolean mStopDrawing;// 鏄惁鍋滄鎸囧崡閽堟棆杞殑鏍囧織浣�
+	private boolean mStopDrawing;// 是否停止指南针旋转的标志位
 	private TextView showDistance;
 	protected Runnable mCompassViewUpdater = new Runnable() {
 		@Override
@@ -66,12 +66,12 @@ public class NaviActivity extends Activity {
 					mDirection = normalizeDegree(mDirection
 							+ ((to - mDirection) * mInterpolator
 									.getInterpolation(Math.abs(distance) > MAX_ROATE_DEGREE ? 0.4f
-											: 0.3f)));// 鐢ㄤ簡涓�涓姞閫熷姩鐢诲幓鏃嬭浆鍥剧墖锛屽緢缁嗚嚧
-					// mPointer.updateDirection(mDirection);// 鏇存柊鎸囧崡閽堟棆杞�
-					arr.rotateArr((int) mDirection+UserInfo.angle);// 閺冨娴�//指向北   需要改成指向目标
-					showDistance.setText(UserInfo.distance+"M");
+											: 0.3f)));// 用了一个加速动画去旋转图片，很细致
+					// mPointer.updateDirection(mDirection);//更新指南针旋转
+					arr.rotateArr((int) mDirection-180+UserInfo.angle);// 閺冨娴�//指向北   需要改成指向目标
+					showDistance.setText(UserInfo.distance);
 				}
-				mHandler.postDelayed(mCompassViewUpdater, 20);// 20姣鍚庨噸鏂版墽琛岃嚜宸憋紝姣斿畾鏃跺櫒濂�
+				mHandler.postDelayed(mCompassViewUpdater, 20);// 20毫秒后重新执行自己，比定时器好
 			}
 		}
 	};
@@ -108,12 +108,12 @@ public class NaviActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_navi);
-		//鍙栧緱bundle瀵硅薄 
+		//取得bundle对象 
 		Navigation.startNavi();
 		Bundle bundle = this.getIntent().getExtras();
 		String word = bundle.getString("word");
 		TextView textView = (TextView) findViewById(R.id.gua_endname);
-		textView.setText("鐩殑鍦�:\n" + word);
+		textView.setText("目的地:\n" + word);
 		showDistance= (TextView)findViewById(R.id.gua_compass_dis);
 		_this = this;
 		this.radar = (ImageView) findViewById(R.id.gua_radar);
@@ -131,14 +131,14 @@ public class NaviActivity extends Activity {
 			}
 		};
 
-		initResources();// 鍒濆鍖杤iew
-		initServices();// 鍒濆鍖栦紶鎰熷櫒鍜屼綅缃湇鍔�
+		initResources();//初始化view
+		initServices();// 初始化传感器和位置服务
 	}
 
 	private void initResources() {
-		mDirection = 0.0f;// 鍒濆鍖栬捣濮嬫柟鍚�
-		mTargetDirection = 0.0f;// 鍒濆鍖栫洰鏍囨柟鍚�
-		mInterpolator = new AccelerateInterpolator();// 瀹炰緥鍖栧姞閫熷姩鐢诲璞�
+		mDirection = 0.0f;// 初始化起始方向
+		mTargetDirection = 0.0f;// 初始化目标方向
+		mInterpolator = new AccelerateInterpolator();// 实例化加速动画对象
 		mStopDrawing = true;
 	}
 
@@ -148,7 +148,7 @@ public class NaviActivity extends Activity {
 				.getDefaultSensor(Sensor.TYPE_ORIENTATION);
 	}
 
-	////////////////////////////////////鏁版嵁鏇存柊////////////////////////////////////////////////////
+////////////////////////////////////数据更新////////////////////////////////////////////////////
 
 	public boolean initGView() {
 		this.arr = (GView) findViewById(R.id.gua_dic_point);
@@ -242,12 +242,13 @@ public class NaviActivity extends Activity {
 		
 		return true;
 	}
+
 	// public boolean updateDestination(String name,int size,int des,int ro,int
 	// imgid){
-	// /*鏇存敼鐩殑鍦板悕瀛�
-	// * 鏇存敼璺濈
-	// * 鏇存敼鏂瑰悜
-	// * 鏇存敼鍥剧墖
+	// /*更改目的地名字
+	// * 更改距离
+	// * 更改方向
+	// * 更改图片
 	// * */
 	//
 	//
@@ -255,9 +256,9 @@ public class NaviActivity extends Activity {
 	// }
 	//
 	// public boolean updatePushNode(ArrayList<PushNodeData> pnds){
-	// /*鑾峰彇涓磋繎鎺ㄩ�佺偣鐨勫垪琛�
-	// * 鎵弿娆＄骇涓磋繎鎺ㄩ�佽〃鐨勫垪琛紝濡傛灉鏈夋帹閫佸垪琛ㄩ噷闈㈡湁鐩稿悓鑺傜偣锛屽彉涓哄叏鏄剧ず
-	// * 鍒楄〃涓笉瀛樺湪鐨勫師鏉ョ殑鑺傜偣 鍙樻垚娆＄骇鑺傜偣
+	// /*获取临近推送点的列表
+	// * 扫描次级临近推送表的列表，如果有推送列表里面有相同节点，变为全显示
+	// * 列表中不存在的原来的节点 变成次级节点
 	// * */
 	//
 	//
@@ -266,13 +267,13 @@ public class NaviActivity extends Activity {
 	// }
 	//
 	// public boolean updateSecondPushNode(ArrayList<PushNodeData> pnds){
-	// /*鑾峰彇娆＄骇鑺傜偣鍒楄〃
-	// * 鍘婚櫎澶氫綑鐨勬绾ц妭鐐�
+	// /*获取次级节点列表
+	// * 去除多余的次级节点
 	// * */
 	// return true;
 	// }
 
-	// ///////////////////////////////////灞忓箷閫傞厤鏂规/////////////////////////////////////////////////////////
+	// ///////////////////////////////////屏幕适配方案/////////////////////////////////////////////////////////
 	float scale_seed_x = 1;
 	float scale_seed_y = 1;
 
@@ -319,28 +320,28 @@ public class NaviActivity extends Activity {
 			mSensorManager.registerListener(mOrientationSensorEventListener,
 					mOrientationSensor, SensorManager.SENSOR_DELAY_GAME);
 		} else {
-			Toast.makeText(this, "娌℃湁鏂瑰悜浼犳劅鍣�", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "没有方向传感器", Toast.LENGTH_SHORT).show();
 		}
 		mStopDrawing = false;
-		mHandler.postDelayed(mCompassViewUpdater, 20);// 20姣鎵ц涓�娆℃洿鏂版寚鍗楅拡鍥剧墖鏃嬭浆
+		mHandler.postDelayed(mCompassViewUpdater, 20);// 20毫秒执行一次更新指南针图片旋转
 		super.onResume();
 	}
 
 	@Override
-	protected void onPause() {// 鍦ㄦ殏鍋滅殑鐢熷懡鍛ㄦ湡閲屾敞閿�浼犳劅鍣ㄦ湇鍔″拰浣嶇疆鏇存柊鏈嶅姟
+	protected void onPause() {// 在暂停的生命周期里注销传感器服务和位置更新服务
 		super.onPause();
 		mStopDrawing = true;
 		if (mOrientationSensor != null) {
 			mSensorManager.unregisterListener(mOrientationSensorEventListener);
 		}
-	}// 鏂瑰悜浼犳劅鍣ㄥ彉鍖栫洃鍚�
+	}// 方向传感器变化监听
 
 	private SensorEventListener mOrientationSensorEventListener = new SensorEventListener() {
 
 		@Override
 		public void onSensorChanged(SensorEvent event) {
 			float direction = event.values[0] * -1.0f;
-			mTargetDirection = normalizeDegree(direction);// 璧嬪�肩粰鍏ㄥ眬鍙橀噺锛岃鎸囧崡閽堟棆杞�
+			mTargetDirection = normalizeDegree(direction);// 赋值给全局变量，让指南针旋转
 		}
 
 		@Override
@@ -352,13 +353,14 @@ public class NaviActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
+
 		// TODO Auto-generated method stub
-		menu.add(Menu.NONE, 1, 1, "闅忔満鍙樺够");
-		menu.add(Menu.NONE, 2, 2, "绠ご涔辫浆");
-		menu.add(Menu.NONE, 3, 3, "鏃嬭浆闆疯揪");
-		menu.add(Menu.NONE, 4, 4, "鎸佺画鍙樺够");
-		menu.add(Menu.NONE, 5, 5, "鍋滄鎸佺画鍙樺寲");
-		menu.add(Menu.NONE, 6, 6, "鍋滄闆疯揪");
+		menu.add(Menu.NONE, 1, 1, "随机变幻");
+		menu.add(Menu.NONE, 2, 2, "箭头乱转");
+		menu.add(Menu.NONE, 3, 3, "旋转雷达");
+		menu.add(Menu.NONE, 4, 4, "持续变幻");
+		menu.add(Menu.NONE, 5, 5, "停止持续变化");
+		menu.add(Menu.NONE, 6, 6, "停止雷达");
 		return super.onCreateOptionsMenu(menu);
 	}
 

@@ -23,8 +23,8 @@ import com.ztbeacon.client.entity.iBeaconClass.iBeacon;
 
 
 /**
- * @author ÍõÐ¡ºì E-mail:493026465@qq.com
- * @version ´´½¨Ê±¼ä£º2014Äê11ÔÂ5ÈÕ ÉÏÎç9:21:32 ÀàËµÃ÷£ºµÃµ½ËùÔÚµØ·½·¨
+ * @author ï¿½ï¿½Ð¡ï¿½ï¿½ E-mail:493026465@qq.com
+ * @version ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º2014ï¿½ï¿½11ï¿½ï¿½5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½9:21:32 ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ÚµØ·ï¿½ï¿½ï¿½
  */
 public class GetLoction {
 	private static final int NEAR = -80;
@@ -33,7 +33,7 @@ public class GetLoction {
 			'9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
 	public final static Message getBeacon(ArrayList<iBeacon> beacons) {
-		// ÅÅÐò
+		// ï¿½ï¿½ï¿½ï¿½
 		int[] results = new int[10];
 		for (int i = 0; i < results.length; i++) {
 			results[i] = beacons.get(i).rssi;
@@ -76,9 +76,9 @@ public class GetLoction {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			// ×ß½øÁË
+			// ï¿½ß½ï¿½ï¿½ï¿½
 		} else if (result <= FAR) {
-			// Ô¶ÀëÁË
+			// Ô¶ï¿½ï¿½ï¿½ï¿½
 		}
 		return msg;
 	}
@@ -111,16 +111,16 @@ public class GetLoction {
 
 	static final JSONObject postLoc(String id) throws ClientProtocolException, IOException, JSONException {
 		HttpPost request = new HttpPost(
-				"http://112.11.119.154//ServiceAPI/locator/");//¶¨Î»
-		// ÏÈ·â×°Ò»¸ö JSON ¶ÔÏó
-		// °ó¶¨µ½ÇëÇó Entry
+				"http://112.11.119.154//ServiceAPI/locator/");//ï¿½ï¿½Î»
+		// ï¿½È·ï¿½×°Ò»ï¿½ï¿½ JSON ï¿½ï¿½ï¿½ï¿½
+		// ï¿½ó¶¨µï¿½ï¿½ï¿½ï¿½ï¿½ Entry
 		StringEntity se = new StringEntity(getJson(id).toString());
 		request.setEntity(se);
-		// ·¢ËÍÇëÇó
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpResponse httpResponse = new DefaultHttpClient().execute(request);
-		// µÃµ½Ó¦´ðµÄ×Ö·û´®£¬ÕâÒ²ÊÇÒ»¸ö JSON ¸ñÊ½±£´æµÄÊý¾Ý
+		// ï¿½Ãµï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Ò»ï¿½ï¿½ JSON ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		String retSrc = EntityUtils.toString(httpResponse.getEntity());
-		// // Éú³É JSON ¶ÔÏó
+		// // ï¿½ï¿½ï¿½ï¿½ JSON ï¿½ï¿½ï¿½ï¿½
 		return new JSONObject(retSrc);
 	}
 	
