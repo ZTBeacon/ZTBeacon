@@ -96,9 +96,8 @@ public class Navigation {
 						Message msg = new Message();
 						msg.what = 2;
 						msg.obj = "到达目的地";
-
 						UserInfo.distance = "到达目的地";
-						break;// ��������
+						break;//
 					}
 					Navigation.doNav(UserInfo.routers);
 				}
@@ -122,6 +121,13 @@ public class Navigation {
 		if (UserInfo.srcInfo.name == null) {
 			// 还未定位得到用户位置
 			message.obj = "还未定位到您的所在位置，请稍等";
+			while (true) {// 卡住 不断去等
+				if (UserInfo.srcInfo.name != null
+						&& UserInfo.srcInfo.name.charAt(0) == '0') {
+					routers = getRouters();
+					break;
+				}
+			}
 		}
 		// 走错路啦！！！
 		// 得到了路径列表0 - finally 为起点到终点 正常导航
@@ -158,7 +164,7 @@ public class Navigation {
 			}
 			// double[] result = { dis, angle };
 			UserInfo.angle = (int) angle;
-			UserInfo.distance = String.valueOf((int)dis)+"M";
+			UserInfo.distance = String.valueOf((int) dis) + "M";
 			// message.obj = result;
 			routers.remove(0);
 		} else {

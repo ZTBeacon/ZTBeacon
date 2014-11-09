@@ -11,6 +11,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.os.Handler.Callback;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -33,13 +35,28 @@ import com.ztbeacon.client.entity.UserInfo;
 
 public class NaviActivity extends Activity {
 
-	private final float MAX_ROATE_DEGREE = 1.0f;//最多旋转一周，即360°
-	private SensorManager mSensorManager;//传感器管理对象
-	private Sensor mOrientationSensor;//传感器对象
+	private final float MAX_ROATE_DEGREE = 1.0f;// 最多旋转一周，即360°
+	private SensorManager mSensorManager;// 传感器管理对象
+	private Sensor mOrientationSensor;// 传感器对象
 	private float mDirection;// 当前浮点方向
 	private float mTargetDirection;// 目标浮点方向
 	private AccelerateInterpolator mInterpolator;// 动画从开始到结束，变化率是一个加速的过程,就是一个动画速率
 	protected final Handler mHandler = new Handler();
+	Handler doShow = new Handler(new Callback() {
+
+		@Override
+		public boolean handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			if (msg.what == 2) {
+			} else if (msg.what == 3) {
+				showDistance.setText(UserInfo.distance);
+			} else if (msg.what == 4) {
+			} else if (msg.what == 5) {
+				// debug
+			}
+			return false;
+		}
+	});
 	private boolean mStopDrawing;// 是否停止指南针旋转的标志位
 	private TextView showDistance;
 	protected Runnable mCompassViewUpdater = new Runnable() {
@@ -47,7 +64,6 @@ public class NaviActivity extends Activity {
 		public void run() {
 			if (!mStopDrawing) {
 				if (mDirection != mTargetDirection) {
-
 					// calculate the short routine
 					float to = mTargetDirection;
 					if (to - mDirection > 180) {
@@ -68,8 +84,10 @@ public class NaviActivity extends Activity {
 									.getInterpolation(Math.abs(distance) > MAX_ROATE_DEGREE ? 0.4f
 											: 0.3f)));// 用了一个加速动画去旋转图片，很细致
 					// mPointer.updateDirection(mDirection);//更新指南针旋转
-					arr.rotateArr((int) mDirection-180+UserInfo.angle);// 閺冨娴�//指向北   需要改成指向目标
+					arr.rotateArr((int) mDirection - 180 + UserInfo.angle);// 閺冨娴�//指向北
+																			// 需要改成指向目标
 					showDistance.setText(UserInfo.distance);
+
 				}
 				mHandler.postDelayed(mCompassViewUpdater, 20);// 20毫秒后重新执行自己，比定时器好
 			}
@@ -86,12 +104,9 @@ public class NaviActivity extends Activity {
 			{ 1, 9 }, { 3, 1 }, { 3, 3 }, { 3, 7 }, { 3, 9 }, { 5, 1 },
 			{ 5, 9 }, { 7, 1 }, { 7, 3 }, { 7, 7 }, { 7, 9 }, { 9, 1 },
 			{ 9, 3 }, { 9, 5 }, { 9, 7 }, { 9, 9 }, };
-	private ArrayList< GView> unuseable_pushnodes ;
-	private int unuseable_positions[][] = {
-			{1,2},{2,8},
-			{4,1},{6,9},
-			{8,2},{9,8}
-	};
+	private ArrayList<GView> unuseable_pushnodes;
+	private int unuseable_positions[][] = { { 1, 2 }, { 2, 8 }, { 4, 1 },
+			{ 6, 9 }, { 8, 2 }, { 9, 8 } };
 	private int cenDis = 48;
 	private int winHei = 854;
 	private int winWid = 480;
@@ -108,13 +123,13 @@ public class NaviActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_navi);
-		//取得bundle对象 
+		// 取得bundle对象
 		Navigation.startNavi();
 		Bundle bundle = this.getIntent().getExtras();
 		String word = bundle.getString("word");
 		TextView textView = (TextView) findViewById(R.id.gua_endname);
 		textView.setText("目的地:\n" + word);
-		showDistance= (TextView)findViewById(R.id.gua_compass_dis);
+		showDistance = (TextView) findViewById(R.id.gua_compass_dis);
 		_this = this;
 		this.radar = (ImageView) findViewById(R.id.gua_radar);
 
@@ -126,12 +141,12 @@ public class NaviActivity extends Activity {
 			public void run() {
 				// TODO Auto-generated method stub
 				_this.randomPushNode();
-				//_this.randomArr();
+				// _this.randomArr();
 				_this.handler.postDelayed(runable, 1500);
 			}
 		};
 
-		initResources();//初始化view
+		initResources();// 初始化view
 		initServices();// 初始化传感器和位置服务
 	}
 
@@ -148,7 +163,7 @@ public class NaviActivity extends Activity {
 				.getDefaultSensor(Sensor.TYPE_ORIENTATION);
 	}
 
-////////////////////////////////////数据更新////////////////////////////////////////////////////
+	// //////////////////////////////////数据更新////////////////////////////////////////////////////
 
 	public boolean initGView() {
 		this.arr = (GView) findViewById(R.id.gua_dic_point);
@@ -205,41 +220,43 @@ public class NaviActivity extends Activity {
 		this.initUnuseableGview();
 		return true;
 	}
-	public boolean initUnuseableGview(){
+
+	public boolean initUnuseableGview() {
 		unuseable_pushnodes = new ArrayList<GView>();
-		
-		int ids[] = {
-				R.id.una_p0,
-				R.id.una_p1,
-				R.id.una_p2,
-				R.id.una_p3,
-				R.id.una_p4	,
-				R.id.una_p5,
-				R.id.una_p6
-				
+
+		int ids[] = { R.id.una_p0, R.id.una_p1, R.id.una_p2, R.id.una_p3,
+				R.id.una_p4, R.id.una_p5, R.id.una_p6
+
 		};
-		
-		for(int i=0;i<unuseable_positions.length;i++){
-			GView gv = (GView)findViewById(ids[i]);
+
+		for (int i = 0; i < unuseable_positions.length; i++) {
+			GView gv = (GView) findViewById(ids[i]);
 			gv.useable = false;
-			
+
 			gv.arrarr.setVisibility(View.GONE);
 			gv.setVisibility(View.VISIBLE);
 			gv.img.setVisibility(View.GONE);
 			gv.txt.setVisibility(View.GONE);
-			
-			//Log.e("----------------", "unuseable view init id:"+i);
-			RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-			lp.leftMargin = this.cenDis * (this.unuseable_positions[i][0] - 1) -(this.cenDis - 48)  + new Random().nextInt(this.cenDis/2) -this.cenDis/4;
-			lp.topMargin = this.cenDis * (this.unuseable_positions[i][1]  -1) + (winHei/2 - 48*5) + new Random().nextInt(this.cenDis/2) -this.cenDis/4 ;
-			gv.setM_Pos(this.unuseable_positions[i][0], this.unuseable_positions[i][1]);
+
+			// Log.e("----------------", "unuseable view init id:"+i);
+			RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+					ViewGroup.LayoutParams.WRAP_CONTENT,
+					ViewGroup.LayoutParams.WRAP_CONTENT);
+			lp.leftMargin = this.cenDis * (this.unuseable_positions[i][0] - 1)
+					- (this.cenDis - 48)
+					+ new Random().nextInt(this.cenDis / 2) - this.cenDis / 4;
+			lp.topMargin = this.cenDis * (this.unuseable_positions[i][1] - 1)
+					+ (winHei / 2 - 48 * 5)
+					+ new Random().nextInt(this.cenDis / 2) - this.cenDis / 4;
+			gv.setM_Pos(this.unuseable_positions[i][0],
+					this.unuseable_positions[i][1]);
 			gv.setLayoutParams(lp);
-			
+
 			this.unuseable_pushnodes.add(gv);
-			
+
 			gv.gone();
 		}
-		
+
 		return true;
 	}
 
@@ -353,7 +370,6 @@ public class NaviActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-
 		// TODO Auto-generated method stub
 		menu.add(Menu.NONE, 1, 1, "随机变幻");
 		menu.add(Menu.NONE, 2, 2, "箭头乱转");
@@ -440,11 +456,12 @@ public class NaviActivity extends Activity {
 		this.radar.setVisibility(View.INVISIBLE);
 		this.radar.clearAnimation();
 	}
+
 	// ///////////////////////////////////////////////////////
-	public void runBGView(){
-		for(int i=0;i<this.unuseable_pushnodes.size();i++){
-    		GView gv = this.unuseable_pushnodes.get(i);
-    		int ran = new Random().nextInt(5); 
+	public void runBGView() {
+		for (int i = 0; i < this.unuseable_pushnodes.size(); i++) {
+			GView gv = this.unuseable_pushnodes.get(i);
+			int ran = new Random().nextInt(5);
 			switch (ran) {
 			case 0:
 				gv.gone();
