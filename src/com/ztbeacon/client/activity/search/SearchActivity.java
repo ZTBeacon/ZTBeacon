@@ -207,6 +207,7 @@ public void onCreateContextMenu(ContextMenu menu, View v,
     next.setClass(this, StoreInfoActivity.class);
     Bundle bundle = new Bundle();
     bundle.putString("word", pavilion.getWord());
+    bundle.putString("id", pavilion.getId());
     next.putExtras(bundle);
     next.putExtras(bundle);
     startActivity(next);

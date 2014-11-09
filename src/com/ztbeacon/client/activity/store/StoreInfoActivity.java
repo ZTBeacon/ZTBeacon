@@ -32,6 +32,7 @@ public class StoreInfoActivity extends Activity{
 	private ImageView logoIv;
 	private GetStoreInfoTask mGetStoreInfoTask;
 	private Bitmap bitmap;
+	private String shopId,word;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -40,7 +41,8 @@ public class StoreInfoActivity extends Activity{
 		ClientApplication.isReady = true;
 		//取得bundle对象 
 		Bundle bundle = this.getIntent().getExtras();
-		String word = bundle.getString("word");
+		word = bundle.getString("word");
+		shopId = bundle.getString("id");
 		nameTv = (TextView) findViewById(R.id.store_name);
 		nameTv.setText(word);
 		descriptionTv = (TextView) findViewById(R.id.store_description);
@@ -52,11 +54,13 @@ public class StoreInfoActivity extends Activity{
 		loadData();
 	}
 	private void loadData() {
+		if(shopId!=null){
 		StoreInfoRequestParam mRequestParam = new StoreInfoRequestParam();
 		mRequestParam.setToken("dd7f0c50b3d201a3d7a78635913a151d");
-		mRequestParam.setShopId("4");
+		mRequestParam.setShopId(shopId);
 		mGetStoreInfoTask = new GetStoreInfoTask();
 		mGetStoreInfoTask.execute(mRequestParam);
+		}
 	}
 	public void clickBack(View v){
 		this.finish();
@@ -65,8 +69,7 @@ public class StoreInfoActivity extends Activity{
 		Intent next = new Intent();
 		next.setClass(this, NaviActivity.class);
 		Bundle bundle = new Bundle();
-		bundle.putString("word", "巴黎春天");
-		next.putExtras(bundle);
+		bundle.putString("word", word);
 		next.putExtras(bundle);
 		startActivity(next);
 		this.finish();

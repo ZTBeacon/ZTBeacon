@@ -21,8 +21,8 @@ import com.ztbeacon.client.entity.Router;
 import com.ztbeacon.client.entity.UserInfo;
 
 /**
- * @author ÍõĞ¡ºì E-mail:493026465@qq.com
- * @version ´´½¨Ê±¼ä£º2014Äê11ÔÂ6ÈÕ ÉÏÎç9:38:19 ÀàËµÃ÷µ¼º½µÄ·½·¨
+ * @author ç‹å°çº¢ E-mail:493026465@qq.com
+ * @version åˆ›å»ºæ—¶é—´ï¼š2014å¹´11æœˆ6æ—¥ ä¸Šåˆ9:38:19 ç±»è¯´æ˜å¯¼èˆªçš„æ–¹æ³•
  */
 public class Navigation {
 	public static List<Router> getRouters() throws JSONException,
@@ -44,15 +44,15 @@ public class Navigation {
 
 		HttpPost request = new HttpPost(
 				"http://112.11.119.154//ServiceAPI/router/");
-		// ÏÈ·â×°Ò»¸ö JSON ¶ÔÏó
-		// °ó¶¨µ½ÇëÇó Entry
+		// å…ˆå°è£…ä¸€ä¸ª JSON å¯¹è±¡
+		// ç»‘å®šåˆ°è¯·æ±‚ Entry
 		StringEntity se = new StringEntity(root.toString());
 		request.setEntity(se);
-		// ·¢ËÍÇëÇó
+		// å‘é€è¯·æ±‚
 		HttpResponse httpResponse = new DefaultHttpClient().execute(request);
-		// µÃµ½Ó¦´ğµÄ×Ö·û´®£¬ÕâÒ²ÊÇÒ»¸ö JSON ¸ñÊ½±£´æµÄÊı¾İ
+		// å¾—åˆ°åº”ç­”çš„å­—ç¬¦ä¸²ï¼Œè¿™ä¹Ÿæ˜¯ä¸€ä¸ª JSON æ ¼å¼ä¿å­˜çš„æ•°æ®
 		String retSrc = EntityUtils.toString(httpResponse.getEntity());
-		// // Éú³É JSON ¶ÔÏó
+		// // ç”Ÿæˆ JSON å¯¹è±¡
 		Log.e("Error", retSrc);
 		JSONObject result = new JSONObject(retSrc);
 
@@ -79,36 +79,36 @@ public class Navigation {
 			throws ClientProtocolException, JSONException, IOException {
 		Message message = new Message();
 		if (UserInfo.srcInfo.name == null) {
-			// »¹Î´¶¨Î»µÃµ½ÓÃ»§Î»ÖÃ
-			message.obj = "»¹Î´¶¨Î»µ½ÄúµÄËùÔÚÎ»ÖÃ£¬ÇëÉÔµÈ";
+			// è¿˜æœªå®šä½å¾—åˆ°ç”¨æˆ·ä½ç½®
+			message.obj = "è¿˜æœªå®šä½åˆ°æ‚¨çš„æ‰€åœ¨ä½ç½®ï¼Œè¯·ç¨ç­‰";
 		}
-		// ×ß´íÂ·À²£¡£¡£¡
-		// µÃµ½ÁËÂ·¾¶ÁĞ±í0 - finally ÎªÆğµãµ½ÖÕµã Õı³£µ¼º½
+		// èµ°é”™è·¯å•¦ï¼ï¼ï¼
+		// å¾—åˆ°äº†è·¯å¾„åˆ—è¡¨0 - finally ä¸ºèµ·ç‚¹åˆ°ç»ˆç‚¹ æ­£å¸¸å¯¼èˆª
 		else if (routers.get(0).getIbeaconid().equals(UserInfo.srcInfo.name)) {
 			if (routers.size() == 1) {
 				routers.remove(0);
 				return message;
 			}
-			message.what = 4;// ¸üĞÂµ¼º½ĞÅÏ¢
-			// µ½´ïÁË¡£·¢ËÍ·½Ïò
+			message.what = 4;// æ›´æ–°å¯¼èˆªä¿¡æ¯
+			// åˆ°è¾¾äº†ã€‚å‘é€æ–¹å‘
 			double dis = Math.sqrt(Math.pow(routers.get(1).getPos_x()
 					- UserInfo.srcInfo.pos_x, 2)
 					+ Math.pow(UserInfo.srcInfo.pos_y
 							- routers.get(1).getPos_y(), 2));
 			double angle = 0;
 			if (UserInfo.srcInfo.pos_x == routers.get(1).getPos_x()) {
-				if (UserInfo.srcInfo.pos_y < routers.get(1).getPos_y())// Íù±±×ß
+				if (UserInfo.srcInfo.pos_y < routers.get(1).getPos_y())// å¾€åŒ—èµ°
 				{
 					angle = 0;
 				} else if (UserInfo.srcInfo.pos_y > routers.get(1).getPos_y()) {
 					angle = 180;
 				}
-			} else if (UserInfo.srcInfo.pos_x < routers.get(1).getPos_x())// ÔÚÍù¶«±ß×ß
+			} else if (UserInfo.srcInfo.pos_x < routers.get(1).getPos_x())// åœ¨å¾€ä¸œè¾¹èµ°
 			{
 				angle = 90.0 - (Math.atan((UserInfo.srcInfo.pos_y - routers
 						.get(1).getPos_y())
 						/ (UserInfo.srcInfo.pos_x - routers.get(1).getPos_x())) * 180 / Math.PI);
-			} else if (UserInfo.srcInfo.pos_x > routers.get(1).getPos_x())// ÍùÎ÷±ß×ß
+			} else if (UserInfo.srcInfo.pos_x > routers.get(1).getPos_x())// å¾€è¥¿è¾¹èµ°
 			{
 				angle = 270.0 - ((UserInfo.srcInfo.pos_y - routers.get(1)
 						.getPos_y())
@@ -121,66 +121,26 @@ public class Navigation {
 			//message.obj = result;
 			routers.remove(0);
 		} else {
-			// ¿ÉÄÜ×ß´íÂ·ÁË 1.·¢ÏÖËù×ßµÄÂ·²»ÔÙÁĞ±íÖĞ 2.Ìø¹ı½Úµã
+			// å¯èƒ½èµ°é”™è·¯äº† 1.å‘ç°æ‰€èµ°çš„è·¯ä¸å†åˆ—è¡¨ä¸­ 2.è·³è¿‡èŠ‚ç‚¹
 			for (int i = 1; i < routers.size(); i++) {
 				if (routers.get(i).getIbeaconid().equals(UserInfo.srcInfo.name)) {
-					// µÚ2Çé¿ö ¸Ä±äÂ·¾¶;
+					// ç¬¬2æƒ…å†µ æ”¹å˜è·¯å¾„;
 					for (int j = 0; j < i; j++) {
 						routers.remove(0);
 					}
 					break;
 				}
-				// ²»ÔÙÂ·¾¢ÁĞ±íÖĞ ´¦Àí ÖØĞÂ¶¨Î»
+				// ä¸å†è·¯åŠ²åˆ—è¡¨ä¸­ å¤„ç† é‡æ–°å®šä½
 				try {
 					UserInfo.routers = Navigation.getRouters();
 				} catch (Exception e) {
-					// ÁĞ±í»ñÈ¡Ê§°Ü
+					// åˆ—è¡¨è·å–å¤±è´¥
 					message.what = 1;
-					message.obj = "³ö´íÁË,»ñÈ¡ÁÔ±ªÊ§°Ü-----Message:" + e.toString();
+					message.obj = "å‡ºé”™äº†,è·å–çŒè±¹å¤±è´¥-----Message:" + e.toString();
 				}
 			}
 		}
 		return message;
 
 	}
-
-	public void startNavi() {
-		UserInfo.dstInfo.pos_x = 48.9;
-		UserInfo.dstInfo.pos_y = 19.2;
-		UserInfo.dstInfo.pos_z = 4;
-		Thread navThread = new Thread(startNav);
-		navThread.start();
-	}
-
-	Runnable startNav = new Runnable() {
-
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-
-			try {
-				UserInfo.routers = Navigation.getRouters();
-				while (true) {
-					if (UserInfo.routers.size() == 0) {
-						Message msg = new Message();
-						msg.what = 2;
-						msg.obj = "µ¼º½½áÊø£¡";
-						break;// µ¼º½½áÊø
-					}
-					Navigation.doNav(UserInfo.routers);
-				}
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-	};
-
 }
