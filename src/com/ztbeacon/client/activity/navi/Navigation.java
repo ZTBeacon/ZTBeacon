@@ -115,9 +115,10 @@ public class Navigation {
 						/ Math.atan((UserInfo.srcInfo.pos_x - routers.get(1)
 								.getPos_x())) * 180 / Math.PI);
 			}
-			double[] result = { dis, angle };
-
-			message.obj = result;
+			//double[] result = { dis, angle };
+			UserInfo.angle=(int) angle;
+			UserInfo.distance = (int) dis;
+			//message.obj = result;
 			routers.remove(0);
 		} else {
 			// 可能走错路了 1.发现所走的路不再列表中 2.跳过节点
