@@ -5,11 +5,15 @@ import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -23,6 +27,7 @@ import com.sensoro.beacon.kit.SensoroBeaconManager.BeaconManagerListener;
 import com.ztbeacon.client.activity.store.StoreInfoActivity;
 import com.ztbeacon.client.database.DatabaseHelper;
 import com.ztbeacon.client.network.mode.RequestParam;
+import com.ztbeacon.client.service.LocService;
 
 public class ClientApplication extends Application{
 	
@@ -69,9 +74,9 @@ public class ClientApplication extends Application{
 	@Override
 	public void onCreate() {
 		super.onCreate();
-/*		this.getApplicationContext().bindService(new Intent(this.getApplicationContext(),
-				MsgService.class), ClientApplication.this.serviceConnection,
-				Context.BIND_AUTO_CREATE);*/
+		this.getApplicationContext().bindService(new Intent(this.getApplicationContext(),
+				LocService.class), ClientApplication.this.serviceConnection,
+				Context.BIND_AUTO_CREATE);
 		databaseHelper = new DatabaseHelper(this.getApplicationContext(), "client.db", null, 3);
 		// 初始化合成对象
 		mTts = SpeechSynthesizer.createSynthesizer(this, mTtsInitListener);
@@ -188,8 +193,7 @@ public class ClientApplication extends Application{
 		SharedPreferences shared = this.getSharedPreferences("lastest_login", Context.MODE_PRIVATE);
 		shared.edit().putString(RequestParam.USER_NAME, name).commit();
 	}
-/*	private ServiceConnection serviceConnection = new ServiceConnection() {
-
+	private ServiceConnection serviceConnection = new ServiceConnection() {
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			try {
@@ -198,16 +202,14 @@ public class ClientApplication extends Application{
 			} catch (RemoteException e) {
 			}
 		}
-
 		@Override
 		public void onServiceDisconnected(ComponentName name) {
 			System.out.println("### Service Connect Failure.");
 		}
-
-	};*/
+	};
 	@Override
 	public void onTerminate() {
-		//this.getApplicationContext().unbindService(ClientApplication.this.serviceConnection);
+		this.getApplicationContext().unbindService(ClientApplication.this.serviceConnection);
 		if (mTts != null) {
 			mTts.stopSpeaking();
 			// 退出时释放连接
