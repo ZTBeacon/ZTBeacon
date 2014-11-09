@@ -26,7 +26,7 @@ public class UserInfo {
 	public static List<Router> routers = new ArrayList<Router>();
 	public static String token = "dd7f0c50b3d201a3d7a78635913a151d";
 
-	public static int addAngle = 0;
+	public static int addAngle = 135;
 	public static int angle = 0 + addAngle;
 	public static String distance = "正在导航，青稍等";
 
