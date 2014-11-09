@@ -41,7 +41,7 @@ public class NaviActivity extends Activity {
 	private AccelerateInterpolator mInterpolator;// 鍔ㄧ敾浠庡紑濮嬪埌缁撴潫锛屽彉鍖栫巼鏄竴涓姞閫熺殑杩囩▼,灏辨槸涓�涓姩鐢婚�熺巼
 	protected final Handler mHandler = new Handler();
 	private boolean mStopDrawing;// 鏄惁鍋滄鎸囧崡閽堟棆杞殑鏍囧織浣�
-
+	private TextView showDistance;
 	protected Runnable mCompassViewUpdater = new Runnable() {
 		@Override
 		public void run() {
@@ -69,6 +69,7 @@ public class NaviActivity extends Activity {
 											: 0.3f)));// 鐢ㄤ簡涓�涓姞閫熷姩鐢诲幓鏃嬭浆鍥剧墖锛屽緢缁嗚嚧
 					// mPointer.updateDirection(mDirection);// 鏇存柊鎸囧崡閽堟棆杞�
 					arr.rotateArr((int) mDirection+UserInfo.angle);// 閺冨娴�//指向北   需要改成指向目标
+					showDistance.setText(UserInfo.distance+"M");
 				}
 				mHandler.postDelayed(mCompassViewUpdater, 20);// 20姣鍚庨噸鏂版墽琛岃嚜宸憋紝姣斿畾鏃跺櫒濂�
 			}
@@ -112,7 +113,7 @@ public class NaviActivity extends Activity {
 		String word = bundle.getString("word");
 		TextView textView = (TextView) findViewById(R.id.gua_endname);
 		textView.setText("鐩殑鍦�:\n" + word);
-
+		showDistance= (TextView)findViewById(R.id.gua_compass_dis);
 		_this = this;
 		this.radar = (ImageView) findViewById(R.id.gua_radar);
 
